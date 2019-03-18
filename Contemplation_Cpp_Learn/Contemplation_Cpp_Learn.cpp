@@ -1,4 +1,10 @@
-﻿// Contemplation C++ (Learning and discovering)
+﻿// Contemplation C++ 
+// Michal Szapiel | SuroCrave 2019
+
+// Created for Learning and discovering. 
+// Documentations, update every month
+/* https://github.com/szapiel104 */
+
 
 #include "pch.h"
 #include <iostream>
@@ -11,9 +17,9 @@ void OneDimensionalTableSort(int a[], int n) {
 
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = i + 1; j < n; j++) {
-			if (a[i] > a[j]) {
+			if (a[i] > a[j]) { 
 				temp = a[i];
-				a[i] = a[j];
+				a[i] = a[j]; 
 				a[j] = temp;
 			}
 		}
@@ -21,7 +27,7 @@ void OneDimensionalTableSort(int a[], int n) {
 
 }
 
-// Application
+// Application - main
 
 int main()
 {
