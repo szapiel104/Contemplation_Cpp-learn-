@@ -5,12 +5,16 @@
 // Documentations, update every month
 /* https://github.com/szapiel104 */
 
+// Next learn https://www.youtube.com/watch?v=h2Taf16gQDI&index=8&list=PLOYHgt8dIdoxx0Y5wzs7CFpmBzb40PaDo
+
 
 #include "pch.h"
 #include <iostream>
 #include <time.h>
 #include <cstdlib>
+#include <conio.h>
 
+#pragma warning(disable:4996) //turn off the security (getch)
 
 using namespace std;
 
@@ -93,9 +97,6 @@ void pointers() {
 	stop = clock();
 	timer = (double)(stop - start)/CLOCKS_PER_SEC;
 	cout << "Save time without pointer : " << timer << endl;
-	
-
-	
 
 	// with pointers
 	int *pointer = table;
@@ -113,15 +114,80 @@ void pointers() {
 	
 }
 
+void YearAndMonth() {
+	int monthNumber;
+	int yearY;
+	cout << "Enter the month number" << endl;
+	if (!(cin >> monthNumber)) {
+		cerr << "This is not month!" << endl;
+	}
+
+	switch (monthNumber) {
+	case 1:
+	case 3:
+	case 5:
+	case 7:
+	case 8: 
+	case 10:
+	case 12:
+		cout << "This month has 31 days" << endl;
+		break;
+
+	case 2:
+		cout << "Which we have a year?" << endl;
+		cin >> yearY;
+		if ((yearY % 4 == 0 && yearY % 100 != 0) || (yearY % 400 == 0)) {
+			cout << "This month has 29 days" << endl;
+		}
+		else {
+			cout << "This month has 28 days" << endl;
+		}
+		break;
+
+	case 4:
+	case 6:
+	case 9:
+	case 11:
+		cout << "This month has 30 days" << endl;
+		break;
+
+	default : cout << "Bad number. Choose again! ..." << endl;
+	}
+
+	
+}
+
 /*
 ***	Main
 */
 int main()
 {
-	cout << " ------------------------------------------------ " << endl;
-	std::cout << " --- Contemplation C++ (Learn) --- " << endl;
-	cout << " ------------------------------------------------ " << endl << endl;
-	
-	//table();
-	pointers();
+	char menuChooser;
+	for (;;) {
+		cout << " ------------------------------------------------ " << endl;
+		std::cout << " --- Contemplation C++ (Learn) --- " << endl;
+		cout << " ------------------------------------------------ " << endl << endl;
+		cout << "1. Table" << endl;
+		cout << "2. Pointers" << endl;
+		cout << "3. Year and month" << endl;
+		cout << "4. Exit application" << endl;
+
+		menuChooser = getch();
+		system("cls");
+		switch (menuChooser) {
+		case '1':
+			table();
+			break;
+		case '2':
+			pointers();
+			break;
+		case '3':
+			YearAndMonth();
+			break;
+		default: cout << "Bad number... Choose again!" << endl;
+		}
+		cout << endl<<endl<<"... Press button ... " << endl;
+		getch();
+		system("cls");
+	}
 }
